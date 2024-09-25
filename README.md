@@ -1,8 +1,8 @@
 # CTF_TryOut
 Writeup on Hackthebox CTF 
 
-## MISC
-### Character
+# MISC
+## Character
 *Security through Induced Boredom is a personal favourite approach of mine. Not as exciting as something like The Fray, but I love making it as tedious as possible to see my secrets, so you can only get one character at a time!*
 
 Connecting using 'nc IP PORT' given by the exercise. I am able to see a game where I can give the server an index number and it will return the character at a specific index of the flag. This challengde could be sovled manually, but obviously should be solved using a script. 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
 final_flag.txt revealed the flag as *HTB{tH15_1s_4_r3aLly_l0nG_fL4g_i_h0p3_f0r_y0Ur_s4k3_tH4t_y0U_sCr1pTEd_tH1s_oR_els3_iT_t0oK_qU1t3_l0ng!!}*
 
-### Stop Drop and Roll
+## Stop Drop and Roll
 *The Fray: The Video Game is one of the greatest hits of the last... well, we don't remember quite how long. Our "computers" these days can't run much more than that, and it has a tendency to get repetitive...*
 
 I connected to the game using netcat comamnd 'nc IP PORT'. I was met with a CLI-based game where the user had to respond with specific input to each command sent by the server. 
