@@ -1,8 +1,8 @@
 # CTF_TryOut
 Writeup on Hackthebox CTF 
 
-#MISC
-##Stop Drop and Roll
+## MISC
+### Stop Drop and Roll
 ```
 import socket
 
