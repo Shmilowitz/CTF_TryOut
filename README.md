@@ -74,7 +74,7 @@ if __name__ == "__main__":
     extract_characters(input_file, output_file)
 ```
 
-final_flag.txt revealed the flag as *HTB{tH15_1s_4_r3aLly_l0nG_fL4g_i_h0p3_f0r_y0Ur_s4k3_tH4t_y0U_sCr1pTEd_tH1s_oR_els3_iT_t0oK_qU1t3_l0ng!!}*
+final_flag.txt revealed the flag as ***HTB{tH15_1s_4_r3aLly_l0nG_fL4g_i_h0p3_f0r_y0Ur_s4k3_tH4t_y0U_sCr1pTEd_tH1s_oR_els3_iT_t0oK_qU1t3_l0ng!!}***
 
 ## Stop Drop and Roll
 *The Fray: The Video Game is one of the greatest hits of the last... well, we don't remember quite how long. Our "computers" these days can't run much more than that, and it has a tendency to get repetitive...*
@@ -110,7 +110,7 @@ while True:
 I ran the script against the IP and PORT given in the exercise and after 500 rounds the final message was: 
 ![image](https://github.com/user-attachments/assets/4213a98f-69e8-4d0e-9ee3-eeff567bf365)
 
-Revealing the flag *HTB{1_wiLl_sT0p_dR0p_4nD_r0Ll_mY_w4Y_oUt!}*
+Revealing the flag ***HTB{1_wiLl_sT0p_dR0p_4nD_r0Ll_mY_w4Y_oUt!}***
 
 
 
@@ -123,7 +123,7 @@ Revealing the flag *HTB{1_wiLl_sT0p_dR0p_4nD_r0Ll_mY_w4Y_oUt!}*
 I receive a file named *stash* and open it with notepad++.
 With ctrl+f I am able to find the flag simply by searching for "HTB{" which is the start of the flag pattern.
 
-*HTB{n33dl3_1n_a_l00t_stack}*
+***HTB{n33dl3_1n_a_l00t_stack}***
 
 # CRYPTO
 
@@ -218,6 +218,6 @@ print(decrypt(cipher_text))  # Print out the decrypted text
 ```
 Using the same identity mapping as the script given, I can easily revert back the ciphertext following a reverse order of action.
 
-Flag was *HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER}*
+Flag was ***HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER}***
 
 
