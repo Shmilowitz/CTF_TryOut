@@ -1,5 +1,5 @@
 # CTF_TryOut
-Writeup on Hackthebox CTF 
+Writeup on Hackthebox CTF - Should prob improve instead of readme.txt files for writeups (https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/)
 
 # MISC
 ## Character
