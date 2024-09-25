@@ -220,4 +220,42 @@ Using the same identity mapping as the script given, I can easily revert back th
 
 Flag was ***HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER}***
 
+# HARDWARE
+
+## Critical Flight
+
+*Your team has assigned you to a mission to investigate the production files of Printed Circuit Boards for irregularities. This is in response to the deployment of nonfunctional DIY drones that keep falling out of the sky. The team had used a slightly modified version of an open-source flight controller in order to save time, but it appears that someone had sabotaged the design before production. Can you help identify any suspicious alterations made to the boards?*
+
+For this challengde an .zip attachment containing multiple .gbr were downloaded. 
+
+I used https://www.pcbway.com/project/OnlineGerberViewer.html to upload and view the gerber files.
+
+Going to the "Layer" view, we can strip all the different layers off. Only looking at the different copper layers reveals:
+
+![image](https://github.com/user-attachments/assets/b94bb819-ecce-4f83-bb12-1bbd86f9a525)
+
+Stitching both parts together gives us the flag ***HTB{533_7h3_1nn32_w02k1n95_0f_313c720n1c5#$@}***.
+
+# WEB
+
+## Flag Command
+
+*Embark on the "Dimensional Escape Quest" where you wake up in a mysterious forest maze that's not quite of this world. Navigate singing squirrels, mischievous nymphs, and grumpy wizards in a whimsical labyrinth that may lead to otherworldly surprises. Will you conquer the enchanted maze or find yourself lost in a different dimension of magical challenges? The journey unfolds in this mystical escape!*
+
+Connecting to the docker contains gives us a CLI-like minigame with different optons to pick from in different stages.
+
+![image](https://github.com/user-attachments/assets/fc60eb7c-7267-487f-ad82-b26f575a9fe8)
+
+I connected to the site while proxying with burp suite. Simply loading the mainpage, I could see a "/api/options" JSON file in the response from the site. 
+
+This file revealed a "secret" option that isn't presented in the actual game.
+
+![image](https://github.com/user-attachments/assets/6e3aa8ed-3955-43e2-90b2-a8d63200538e)
+
+![image](https://github.com/user-attachments/assets/e6cfa704-113b-4bef-bc41-f82aa59f5fb2)
+
+
+![image](https://github.com/user-attachments/assets/b986336d-bdc5-49f1-8ec2-c00e275b9e25)
+
+
 
