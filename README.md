@@ -111,3 +111,113 @@ I ran the script against the IP and PORT given in the exercise and after 500 rou
 ![image](https://github.com/user-attachments/assets/4213a98f-69e8-4d0e-9ee3-eeff567bf365)
 
 Revealing the flag *HTB{1_wiLl_sT0p_dR0p_4nD_r0Ll_mY_w4Y_oUt!}*
+
+
+
+# REVERSING
+
+## LootStash
+
+*A giant stash of powerful weapons and gear have been dropped into the arena - but there's one item you have in mind. Can you filter through the stack to get to the one thing you really need?*
+
+I receive a file named *stash* and open it with notepad++.
+With ctrl+f I am able to find the flag simply by searching for "HTB{" which is the start of the flag pattern.
+
+*HTB{n33dl3_1n_a_l00t_stack}*
+
+# CRYPTO
+
+## Dynastic
+
+Given
+```
+from secret import FLAG
+from random import randint
+
+def to_identity_map(a):
+    return ord(a) - 0x41
+
+def from_identity_map(a):
+    return chr(a % 26 + 0x41)
+
+def encrypt(m):
+    c = ''
+    for i in range(len(m)):
+        ch = m[i]
+        if not ch.isalpha():
+            ech = ch
+        else:
+            chi = to_identity_map(ch)
+            ech = from_identity_map(chi + i)
+        c += ech
+    return c
+
+with open('output.txt', 'w') as f:
+    f.write('Make sure you wrap the decrypted text with the HTB flag format :-]\n')
+    f.write(encrypt(FLAG))"
+```
+
+### Code Overview:
+
+1. **`to_identity_map` and `from_identity_map` Functions**:
+    
+    * `to_identity_map(a)` converts an uppercase letter (`A-Z`) to a number by subtracting 0x41 (which is the ASCII value of 'A').  
+        * For example, `to_identity_map('A')` will return `0` and `to_identity_map('B')` will return `1`.
+    * `from_identity_map(a)` converts a number back to a letter by using modulo 26 (to ensure it wraps around if needed) and adding 0x41 to map it back to an uppercase letter.  
+        * For example, `from_identity_map(0)` will return `'A'` and `from_identity_map(1)` will return `'B'`.
+
+2. **`encrypt(m)` Function**:
+    
+    This function encrypts the message `m`.  
+    For each character in the message:
+    
+    * If the character is not alphabetic, it leaves it unchanged.
+    * If it is alphabetic, it:
+        1. Converts it to a number using `to_identity_map`.
+        2. Adds the index `i` (the position of the character in the string).
+        3. Converts it back to a letter using `from_identity_map`.
+
+    This creates a Caesar-like cipher where each letter is shifted by its position in the string.
+
+
+### Decryption Steps:
+
+1. **Reversing the Encryption**:
+    * For each character in the encrypted string:
+        1. Convert it back to a number using `to_identity_map`.
+        2. Subtract the index `i`.
+        3. Convert it back to a letter using `from_identity_map`.
+
+```python
+def decrypt(c):
+    m = ''
+    # Iterate over each character in the encrypted string
+    for i in range(len(c)):
+        ch = c[i]
+        
+        # If the character is not alphabetic, leave it unchanged
+        if not ch.isalpha():
+            ech = ch
+        else:
+            # Convert the character back to its identity map (A -> 0, B -> 1, etc.)
+            chi = to_identity_map(ch)
+            
+            # Subtract the current index 'i' from the identity map value
+            # This reverses the encryption's shifting effect
+            ech = from_identity_map(chi - i)
+        
+        # Append the decrypted character to the result string
+        m += ech
+    
+    # Return the fully decrypted message
+    return m
+
+# Example usage
+cipher_text = "DJF_CTA_SWYH_NPDKK_MBZ_QPHTIGPMZY_KRZSQE?!_ZL_CN_PGLIMCU_YU_KJODME_RYGZXL"
+print(decrypt(cipher_text))  # Print out the decrypted text
+```
+Using the same identity mapping as the script given, I can easily revert back the ciphertext following a reverse order of action.
+
+Flag was *HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER}*
+
+
